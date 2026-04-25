@@ -1,6 +1,6 @@
-# NTE DLSS Panel
+# Neverness To Everness / Ananta DLSS Panel
 
-Chinese-first local WebUI for applying the tested DLSSTweaks `winmm.dll` workflow to Neverness To Everness / Ananta.
+Chinese-first local WebUI specifically for applying the tested DLSSTweaks `winmm.dll` workflow to Neverness To Everness / Ananta.
 
 Keywords: Neverness To Everness, NTE, Ananta, DLSS, DLSSTweaks, NVIDIA DLSS HUD, DLSS render scale, DLSS low resolution, winmm.dll wrapper, local WebUI.
 
@@ -8,7 +8,7 @@ Chinese README: [README.md](README.md)
 
 ## What It Does
 
-This tool starts a local-only WebUI at:
+This NTE / Ananta focused tool starts a local-only WebUI at:
 
 ```text
 http://127.0.0.1:22532
@@ -36,7 +36,7 @@ That registry value only controls DLSS HUD visibility. It does not control rende
 
 ## Third-Party Notice
 
-This project is not DLSSTweaks itself and is not an official NVIDIA tool.
+This project is not DLSSTweaks itself, is not an official NVIDIA tool, and is not meant to be a generic DLSS mod manager.
 
 It is a Chinese local WebUI and automation wrapper around DLSSTweaks, specifically documenting and automating the tested Neverness To Everness / Ananta path:
 

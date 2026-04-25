@@ -1,8 +1,8 @@
 # 第三方声明 / Third-Party Notices
 
-本项目不是 DLSSTweaks 本体，也不是 NVIDIA 官方工具。它基于 DLSSTweaks 做中文本地 WebUI、自动化安装、备份和恢复，并针对异环（Neverness To Everness / Ananta）的实际加载路径整理出 `winmm.dll + dlsstweaks.ini` 方案。
+本项目不是 DLSSTweaks 本体，也不是 NVIDIA 官方工具，也不是通用 DLSS Mod 管理器。它基于 DLSSTweaks 做中文本地 WebUI、自动化安装、备份和恢复，并针对异环（Neverness To Everness / Ananta）的实际加载路径整理出 `winmm.dll + dlsstweaks.ini` 方案。
 
-This project is not DLSSTweaks itself and is not an official NVIDIA tool. It is a Chinese local WebUI and automation wrapper around DLSSTweaks for the tested Neverness To Everness / Ananta `winmm.dll + dlsstweaks.ini` workflow.
+This project is not DLSSTweaks itself, is not an official NVIDIA tool, and is not a generic DLSS mod manager. It is a Chinese local WebUI and automation wrapper around DLSSTweaks for the tested Neverness To Everness / Ananta `winmm.dll + dlsstweaks.ini` workflow.
 
 ## DLSSTweaks
 

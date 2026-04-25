@@ -1,6 +1,6 @@
-# NTE DLSS Panel
+# 异环 DLSS Panel
 
-异环（Neverness To Everness）本地 DLSSTweaks WebUI。工具启动后监听：
+异环（Neverness To Everness / Ananta）专用本地 DLSSTweaks WebUI。工具启动后监听：
 
 English README: [README.en.md](README.en.md)
 
@@ -14,7 +14,7 @@ http://127.0.0.1:22532
 
 ## 第三方项目说明
 
-本项目不是 DLSSTweaks 本体，也不是 NVIDIA 官方工具。它是专门给异环（Neverness To Everness / Ananta）整理的中文本地 WebUI 和自动化安装脚本，目标是把异环实测可用的 `winmm.dll + dlsstweaks.ini` 路径做成可恢复的一键流程。
+本项目不是 DLSSTweaks 本体，也不是 NVIDIA 官方工具，也不是通用 DLSS Mod 管理器。它是专门给异环（Neverness To Everness / Ananta）整理的中文本地 WebUI 和自动化安装脚本，目标是把异环实测可用的 `winmm.dll + dlsstweaks.ini` 路径做成可恢复的一键流程。
 
 DLSSTweaks 的原作者是 emoose，发布页是：
 
@@ -123,10 +123,10 @@ HKLM\SOFTWARE\NVIDIA Corporation\Global\NGXCore\ShowDlssIndicator
 
 ## 档位映射
 
-不同游戏实际调用的 DLSS 档位可能不同。
+异环不同版本、不同入口或 NVIDIA App 配置下，实际调用的 DLSS 档位可能不同。
 
-异环实测：游戏内“性能”更可能对应 `Performance`。  
-有些游戏：可能调用 `UltraPerformance`。  
+异环实测：游戏内“性能”更可能对应 `Performance`。
+部分配置：可能仍会调用 `UltraPerformance`。
 最稳妥方式：把四个档位写成同一个比例。
 
 工具默认统一写入：
@@ -140,7 +140,7 @@ Balanced = 0.30
 Quality = 0.30
 ```
 
-如果你明确知道某个游戏调用哪个档位，可以在面板里关闭“四个 DLSS 档位使用同一个比例”，然后分别填写：
+如果你明确知道异环当前配置调用哪个档位，可以在面板里关闭“四个 DLSS 档位使用同一个比例”，然后分别填写：
 
 ```text
 UltraPerformance

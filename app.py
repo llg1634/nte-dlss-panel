@@ -554,20 +554,32 @@ def restore_patch(path_value: str | None, backup_name: str | None = None) -> dic
     }
 
 
-def api_state() -> dict:
-    common = Path(r"E:\Neverness To Everness")
-    detected = None
-    if common.exists():
+def common_game_candidates() -> list[Path]:
+    candidates: list[Path] = []
+    env_path = os.environ.get("NTE_GAME_PATH")
+    if env_path:
+        candidates.append(Path(env_path))
+    candidates.extend(Path(f"{drive}:\\Neverness To Everness") for drive in "CDEFGHIJKLMNOPQRSTUVWXYZ")
+    return candidates
+
+
+def detect_common_game() -> dict | None:
+    for candidate in common_game_candidates():
         try:
-            detected = detect_game(str(common))
-        except AppError:
-            detected = None
+            if candidate.exists():
+                return detect_game(str(candidate))
+        except (AppError, OSError):
+            continue
+    return None
+
+
+def api_state() -> dict:
     return {
         "assetsReady": ASSET_DLL.is_file() and ASSET_INI.is_file(),
         "assetDll": str(ASSET_DLL),
         "assetIni": str(ASSET_INI),
         "defaultPort": DEFAULT_PORT,
-        "commonDetected": detected,
+        "commonDetected": detect_common_game(),
         "processes": running_processes(),
         "hud": read_hud_status(),
     }
@@ -675,7 +687,7 @@ def main() -> int:
 
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     url = f"http://{args.host}:{args.port}/"
-    safe_console_log(f"NTE DLSS Panel running at {url}")
+    safe_console_log(f"异环 DLSS Panel running at {url}")
     safe_console_log("Press Ctrl+C to stop.")
 
     if not args.no_browser:

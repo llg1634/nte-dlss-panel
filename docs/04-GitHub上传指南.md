@@ -49,7 +49,7 @@ build/
 5. Description 填：
 
 ```text
-Local WebUI for applying DLSSTweaks DLSS render scale overrides to Neverness To Everness.
+Chinese local WebUI for the tested DLSSTweaks winmm.dll workflow in Neverness To Everness / Ananta.
 ```
 
 6. 选择 `Public` 或 `Private`。
@@ -92,7 +92,7 @@ git push -u origin main
 1. 点右侧 `Releases`。
 2. 点 `Draft a new release`。
 3. Tag 写 `v0.1.0`。
-4. Title 写 `NTE DLSS Panel v0.1.0`。
+4. Title 写 `异环 DLSS Panel v0.1.0`。
 5. 上传 zip。
 6. 发布。
 
