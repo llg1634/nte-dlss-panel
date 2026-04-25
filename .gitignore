@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+_tmp*/
+*.log
+_local_backups/
+dist/
+build/
+*.spec

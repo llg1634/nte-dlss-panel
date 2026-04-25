@@ -1,0 +1,52 @@
+name: Bug report
+description: Report a problem with detection, install, restore, or HUD.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Tool version
+      placeholder: v0.1.0 or commit hash
+    validations:
+      required: false
+  - type: input
+    id: game-path
+    attributes:
+      label: Game path
+      placeholder: E:\Neverness To Everness
+    validations:
+      required: false
+  - type: dropdown
+    id: install-state
+    attributes:
+      label: Installed files in Win64
+      options:
+        - winmm.dll and dlsstweaks.ini exist
+        - only one file exists
+        - neither exists
+        - not sure
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: dlsstweaks.log
+      description: Paste the last 80 lines if the log exists.
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Add screenshots of the panel or DLSS HUD if useful.
+    validations:
+      required: false
