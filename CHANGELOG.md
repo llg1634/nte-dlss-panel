@@ -1,5 +1,12 @@
 # 更新日志
 
+## 0.1.2
+
+- 重写 README 第一屏定位，强调异环 / Neverness To Everness / Ananta、DLSS 4.x / 4.5、L 模型、720p 以下、540p 到 4K、25%-30% 渲染倍率等搜索场景。
+- 新增中英文搜索关键词段，覆盖 `sub-720p DLSS`、`low render scale`、`DLSSTweaks winmm wrapper`、`UE5` 等关键词。
+- WebUI 新增“退出工具”按钮，可从页面关闭本地后端服务，避免只关网页后 exe 仍在后台运行。
+- README、快速使用和常见问题补充“前端 WebUI 与后端服务不是同一个进程”的说明。
+
 ## 0.1.1
 
 - 补充英文 README：`README.en.md`。

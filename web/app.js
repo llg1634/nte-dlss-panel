@@ -25,6 +25,7 @@ const filePlan = $("filePlan");
 const backupSelect = $("backupSelect");
 const backupDetails = $("backupDetails");
 const hudCard = $("hudCard");
+const serviceCard = $("serviceCard");
 
 function showToast(message) {
   toast.textContent = message;
@@ -356,6 +357,36 @@ async function restorePatch() {
   }
 }
 
+async function shutdownTool() {
+  if (!confirm("退出本地后端服务？关闭后需要重新运行 NTEDLSSPanel.exe 或 run.bat 才能再次打开面板。")) {
+    return;
+  }
+
+  $("shutdownBtn").disabled = true;
+  statusStrip.innerHTML = "<span>本地服务正在退出</span>";
+  serviceCard.innerHTML = `
+    <strong>本地服务正在退出</strong><br>
+    后端会在几百毫秒后关闭。这个网页可能会失去连接，可以直接关闭浏览器标签页。
+  `;
+
+  try {
+    const data = await request("/api/shutdown", { method: "POST", body: "{}" });
+    showToast(data.message || "后端服务正在退出。");
+  } catch (error) {
+    showToast(error.message);
+    $("shutdownBtn").disabled = false;
+    return;
+  }
+
+  setTimeout(() => {
+    serviceCard.classList.add("muted");
+    serviceCard.innerHTML = `
+      <strong>本地服务已关闭</strong><br>
+      如果需要继续使用，请重新运行 <code>NTEDLSSPanel.exe</code> 或 <code>run.bat</code>。
+    `;
+  }, 900);
+}
+
 function initTheme() {
   const saved = localStorage.getItem("nte-theme");
   if (saved === "dark") {
@@ -426,6 +457,7 @@ $("restoreBtn").addEventListener("click", restorePatch);
 $("hudRefreshBtn").addEventListener("click", () => refreshHud(true));
 $("hudOnBtn").addEventListener("click", () => setHud(true));
 $("hudOffBtn").addEventListener("click", () => setHud(false));
+$("shutdownBtn").addEventListener("click", shutdownTool);
 
 initTheme();
 updateRatio("0.30");

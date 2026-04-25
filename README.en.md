@@ -1,10 +1,24 @@
 # Neverness To Everness / Ananta DLSS Panel
 
-Chinese-first local WebUI specifically for applying the tested DLSSTweaks `winmm.dll` workflow to Neverness To Everness / Ananta.
+Chinese-first local WebUI for Neverness To Everness / Ananta DLSS 4.x / DLSS 4.5 low render scale testing. It targets sub-720p, 680p, 648p, 540p, and 25%-30% render scale experiments at 4K output, using the tested DLSSTweaks `winmm.dll + dlsstweaks.ini` workflow.
 
-Keywords: Neverness To Everness, NTE, Ananta, DLSS, DLSSTweaks, NVIDIA DLSS HUD, DLSS render scale, DLSS low resolution, winmm.dll wrapper, local WebUI.
+Keywords: Neverness To Everness, Ananta, NTE, DLSS 4, DLSS 4.5, DLSS L model, NVIDIA NGX, NVIDIA DLSS HUD, DLSSTweaks, dlsstweaks.ini, winmm.dll wrapper, dxgi.dll detected, DLSS render scale, low render scale, sub-720p DLSS, 540p to 4K, 648p to 4K, 680p to 4K, 25% render scale, 30% render scale, Unreal Engine 5, UE5, local WebUI.
 
 Chinese README: [README.md](README.md)
+
+## Search Queries
+
+Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS low render scale, NTE sub-720p DLSS, NTE 540p to 4K, NTE 25% render scale, NTE 30% render scale, Neverness To Everness DLSSTweaks, Ananta winmm.dll wrapper, DLSS 540p to 4K, DLSS 648p to 4K, DLSS 680p to 4K, DLSS L model, NVIDIA NGX, DLSSTweaks winmm wrapper, Unreal Engine 5 DLSS.
+
+## Project Positioning
+
+This is not a generic one-click DLSS deployment tool. It packages one tested Neverness To Everness / Ananta workflow into a reusable local panel:
+
+- Neverness To Everness / Ananta is a newer UE5 game, and its DLSS loading path is not identical to every other game.
+- DLSS 4.x / 4.5 with the L model can make very low input resolutions more usable when upscaling to 4K, so sub-720p render scale testing is meaningful.
+- The normal game or NVIDIA App path usually bottoms out around 33%, which is roughly 720p at 4K output.
+- Dropping `dxgi.dll` directly was detected by the game during testing; the working path was `winmm.dll + dlsstweaks.ini`.
+- This tool only automates that NTE / Ananta tested path with a local WebUI, backup, restore, DLSS HUD verification, and a WebUI shutdown button.
 
 ## What It Does
 
@@ -93,6 +107,12 @@ Then open:
 ```text
 http://127.0.0.1:22532
 ```
+
+## Frontend vs Backend Service
+
+The browser page is only the WebUI frontend. The actual local backend is `NTEDLSSPanel.exe` or `python app.py`, which listens on `127.0.0.1:22532` and performs folder selection, file writes, backup/restore, and the DLSS HUD toggle.
+
+Closing the browser tab does not stop the backend process. Use the WebUI `退出工具` / shutdown button in the top-right corner to stop the local service. If the page is already closed, open `http://127.0.0.1:22532` again and click the shutdown button, or end `NTEDLSSPanel.exe` from Task Manager.
 
 Basic flow:
 

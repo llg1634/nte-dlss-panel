@@ -49,7 +49,7 @@ build/
 5. Description 填：
 
 ```text
-Chinese local WebUI for the tested DLSSTweaks winmm.dll workflow in Neverness To Everness / Ananta.
+异环 / Neverness To Everness / Ananta DLSS 4.5 low render scale WebUI: sub-720p, 540p-to-4K, DLSSTweaks winmm wrapper.
 ```
 
 6. 选择 `Public` 或 `Private`。
@@ -110,3 +110,30 @@ README 至少包含：
 - 第三方项目声明。
 
 本仓库已经包含这些内容。
+
+## 推荐 GitHub Topics
+
+GitHub Topics 建议用英文短词，方便搜索和归类：
+
+```text
+neverness-to-everness
+ananta
+nte
+dlss
+dlss4
+dlss45
+dlss-l-model
+dlsstweaks
+nvidia-dlss
+nvidia-ngx
+dlss-hud
+ue5
+unreal-engine-5
+render-scale
+low-render-scale
+sub-720p
+4k-upscaling
+winmm-dll
+windows
+webui
+```

@@ -121,6 +121,12 @@ code {
   margin-bottom: 28px;
 }
 
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .eyebrow {
   margin: 0 0 8px;
   color: var(--muted);
@@ -187,6 +193,11 @@ h3 {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.hero .service-note {
+  margin-top: 18px;
+  color: color-mix(in srgb, var(--text) 78%, var(--muted));
 }
 
 .pill {
@@ -360,6 +371,13 @@ button:active {
 .danger {
   color: white;
   background: linear-gradient(135deg, var(--danger), #8f2924);
+}
+
+.ghost-danger {
+  min-width: 112px;
+  border: 1px solid color-mix(in srgb, var(--danger) 42%, var(--line));
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 10%, var(--panel-strong));
 }
 
 .icon-button {
@@ -631,10 +649,16 @@ button:active {
 
 @media (max-width: 860px) {
   .topbar,
+  .top-actions,
   .hero,
   .path-row,
   .button-row {
     flex-direction: column;
+  }
+
+  .top-actions {
+    width: 100%;
+    align-items: stretch;
   }
 
   .grid {

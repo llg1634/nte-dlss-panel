@@ -16,10 +16,13 @@
           <p class="eyebrow">Local Control Surface</p>
           <h1>异环 DLSS 面板</h1>
         </div>
-        <button id="themeToggle" class="icon-button" type="button" aria-label="切换明暗主题">
-          <span class="sun">浅色</span>
-          <span class="moon">深色</span>
-        </button>
+        <div class="top-actions">
+          <button id="themeToggle" class="icon-button" type="button" aria-label="切换明暗主题">
+            <span class="sun">浅色</span>
+            <span class="moon">深色</span>
+          </button>
+          <button id="shutdownBtn" class="danger ghost-danger" type="button">退出工具</button>
+        </div>
       </nav>
 
       <section class="hero card">
@@ -29,6 +32,10 @@
           <p>
             选择异环安装目录，工具会自动定位 <code>HTGame.exe</code>，写入
             <code>winmm.dll</code> 和 <code>dlsstweaks.ini</code>。安装前会备份同名文件，恢复时按备份清单还原。
+          </p>
+          <p class="service-note">
+            注意：网页只是前端面板，真正运行的是本机后端服务。只关闭浏览器标签页不会退出
+            <code>NTEDLSSPanel.exe</code>，用右上角“退出工具”按钮关闭后端。
           </p>
         </div>
         <div class="dial" aria-hidden="true">
@@ -227,6 +234,11 @@
 
           <div id="statusStrip" class="status-strip">
             <span>等待操作</span>
+          </div>
+
+          <div id="serviceCard" class="mini-card">
+            <strong>本地服务</strong><br>
+            当前网页连接的是 <code>127.0.0.1:22532</code> 后端。关闭网页只会关闭前端显示，不会结束 exe 或 Python 进程；需要退出时点右上角“退出工具”。
           </div>
 
           <div class="log-head">

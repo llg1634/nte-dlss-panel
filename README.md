@@ -1,16 +1,32 @@
 # 异环 DLSS Panel
 
-异环（Neverness To Everness / Ananta）专用本地 DLSSTweaks WebUI。工具启动后监听：
+异环（Neverness To Everness / Ananta）DLSS 4.x / DLSS 4.5 低渲染倍率本地 WebUI。它用于在 4K 输出下测试 720p 以下、680p、648p、540p、25%-30% render scale 等 DLSS 自定义比例，并把异环实测可用的 DLSSTweaks `winmm.dll + dlsstweaks.ini` 路径做成可备份、可恢复的一键流程。
 
 English README: [README.en.md](README.en.md)
 
-English keywords: Neverness To Everness, NTE, Ananta, DLSS, DLSSTweaks, NVIDIA DLSS HUD, DLSS render scale, DLSS low resolution, winmm.dll wrapper, local WebUI.
+Local URL:
 
 ```text
 http://127.0.0.1:22532
 ```
 
-它不是在线服务，只在本机运行。本机网页负责选择游戏目录，Python 后端负责文件检测、备份、写入和恢复。
+它不是在线服务，只在本机运行。本机网页负责选择游戏目录，Python / exe 后端负责文件检测、备份、写入和恢复。只关闭浏览器标签页不会退出后端服务，需要在面板里点“退出工具”。
+
+## 搜索关键词 / Search Keywords
+
+异环 DLSS 4.5，异环 DLSS 4，异环 720p 以下，异环 540p 超分 4K，异环 25% 渲染倍率，异环 30% 渲染倍率，异环 DLSS 低分辨率，异环 DLSSTweaks，异环 winmm.dll，异环 dxgi.dll detected，异环 DLSS HUD，异环 NVIDIA App 超级性能，异环性能档，异环 UE5 DLSS。
+
+Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS, NTE sub-720p DLSS, NTE low render scale, DLSS 540p to 4K, DLSS 648p to 4K, DLSS 680p to 4K, DLSS 25% render scale, DLSS 30% render scale, DLSS L model, NVIDIA NGX, DLSSTweaks winmm wrapper, dlsstweaks.ini, Unreal Engine 5 DLSS.
+
+## 项目定位
+
+这个项目的重点不是“通用一键部署”，而是把异环这个具体场景里的 DLSS 低倍率方案做成可复用流程：
+
+- 异环（Neverness To Everness / Ananta）是 UE5 新游戏，DLSS 加载路径和普通游戏不完全一样。
+- DLSS 4.x / 4.5 的 L 模型在低输入分辨率到 4K 输出时表现更强，所以 720p 以下的渲染倍率有实际测试价值。
+- 游戏/NVIDIA App 常规入口通常只能到 33% 左右，4K 下约等于 720p。
+- 直接放 `dxgi.dll` 会被异环检测，实测最终可用入口是 `winmm.dll + dlsstweaks.ini`。
+- 本工具只把这个异环实测路径做成本地 WebUI、备份、恢复、HUD 验证和退出后端服务的流程。
 
 ## 第三方项目说明
 
@@ -46,6 +62,7 @@ https://github.com/emoose/DLSSTweaks
 - 局部比例修改：只写当前游戏目录的 `dlsstweaks.ini`，不修改 NVIDIA App / DRS 全局比例。
 - 自动备份恢复：每次安装都会生成独立 manifest，恢复时按清单回滚。
 - HUD 辅助验证：可开启/关闭 NVIDIA DLSS HUD，用于确认实际输入/输出分辨率。
+- 后端退出按钮：网页前端和本地后端分离，关闭网页不会结束 exe；面板提供“退出工具”按钮关闭本地服务。
 
 ## 适用目标
 
@@ -253,6 +270,15 @@ XInput1_4.dll          如果安装前存在
 ```text
 http://127.0.0.1:22532
 ```
+
+## 运行与退出
+
+这个工具分成两层：
+
+- 前端 WebUI：浏览器里的页面，只负责显示和发起操作。
+- 后端服务：`NTEDLSSPanel.exe` 或 `python app.py`，负责监听 `127.0.0.1:22532`、选择文件夹、写入文件、备份恢复和 HUD 开关。
+
+所以只关闭网页标签页，不会关闭后端服务，`22532` 端口也会继续被占用。需要退出时，在 WebUI 右上角点“退出工具”。如果页面已经关掉，也可以重新打开 `http://127.0.0.1:22532` 后再点“退出工具”；或者在任务管理器里结束 `NTEDLSSPanel.exe`。
 
 页面步骤：
 

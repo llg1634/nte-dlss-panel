@@ -585,8 +585,17 @@ def api_state() -> dict:
     }
 
 
+def schedule_shutdown(server: ThreadingHTTPServer) -> None:
+    def worker() -> None:
+        time.sleep(0.35)
+        safe_console_log("Shutdown requested from WebUI.")
+        server.shutdown()
+
+    threading.Thread(target=worker, name="nte-shutdown", daemon=True).start()
+
+
 class Handler(BaseHTTPRequestHandler):
-    server_version = "NTEDLSSPanel/1.0"
+    server_version = "NTEDLSSPanel/0.1.2"
 
     def log_message(self, fmt: str, *args: object) -> None:
         safe_console_log("[%s] %s" % (self.log_date_time_string(), fmt % args))
@@ -599,6 +608,10 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(payload)
+        try:
+            self.wfile.flush()
+        except OSError:
+            pass
 
     def read_json(self) -> dict:
         length = int(self.headers.get("Content-Length", "0") or "0")
@@ -667,6 +680,13 @@ class Handler(BaseHTTPRequestHandler):
                 return
             if parsed.path == "/api/hud":
                 self.send_json({"ok": True, "hud": write_hud_status(bool(data.get("enabled")))})
+                return
+            if parsed.path == "/api/shutdown":
+                self.send_json({
+                    "ok": True,
+                    "message": "后端服务正在退出。浏览器页面可以关闭；再次使用时重新运行 NTEDLSSPanel.exe 或 run.bat。",
+                })
+                schedule_shutdown(self.server)
                 return
 
             raise AppError("未知 API。", 404)
