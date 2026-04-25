@@ -17,11 +17,6 @@ http://127.0.0.1:22532
 3. [备份、恢复与修改范围](docs/03-备份恢复与修改范围.md)
 4. [常见问题](docs/05-常见问题.md)
 
-如果你是项目维护者，先看：
-
-1. [GitHub 上传指南](docs/04-GitHub上传指南.md)
-2. [发布检查清单](docs/06-发布检查清单.md)
-
 ## 项目特点
 
 - 本机 WebUI：默认只监听 `127.0.0.1:22532`。
@@ -280,11 +275,9 @@ powershell -ExecutionPolicy Bypass -File scripts\nvidia_dlss_hud.ps1 off
 
 HUD 开启后，进游戏并启用 DLSS，屏幕角落应显示 DLSS 输入/输出信息。它用于确认实际分辨率是否低于 720p。
 
-## Python 与打包
+## Python
 
 源码运行需要本机有 Python 3。
-
-如果要发给没有 Python 的人，建议用 PyInstaller 打包成 exe，再发布 `dist` 里的成品。打包后仍然是本机 WebUI，只是用户不需要单独安装 Python。
 
 本项目没有运行时第三方 Python 依赖。打包工具 PyInstaller 只在构建机器上需要。
 
@@ -298,13 +291,3 @@ dlsstweaks.ini
 ```
 
 它们来自 DLSSTweaks release。这个 DLL 不需要按玩家显卡驱动版本单独匹配，运行时会加载玩家本机 NVIDIA NGX 组件。
-
-## Git 提交
-
-```powershell
-git init
-git add nte-dlss-panel
-git commit -m "Add NTE DLSS web panel"
-```
-
-公开发布前，建议在仓库说明里保留 DLSSTweaks 来源和第三方文件再分发说明。
