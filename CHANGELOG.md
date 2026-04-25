@@ -1,11 +1,11 @@
-# Changelog
+# 更新日志
 
 ## 0.1.0
 
-- Added local WebUI on `127.0.0.1:22532`.
-- Added game path detection for Neverness To Everness / `HTGame.exe`.
-- Added DLSSTweaks `winmm.dll` install flow.
-- Added per-install backup manifest and restore flow.
-- Added DLSS quality level ratio editor.
-- Added NVIDIA DLSS HUD status check and toggle.
-- Added documentation for the tested path and failed alternatives.
+- 新增本机 WebUI，默认监听 `127.0.0.1:22532`。
+- 新增异环 / `HTGame.exe` 路径检测。
+- 新增 DLSSTweaks `winmm.dll` 安装流程。
+- 新增每次安装独立备份 manifest 和恢复流程。
+- 新增 DLSS 档位比例编辑。
+- 新增 NVIDIA DLSS HUD 状态检测和开关。
+- 新增最终可用路径和失败试错路径文档。

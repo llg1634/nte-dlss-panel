@@ -1,52 +1,52 @@
-name: Bug report
-description: Report a problem with detection, install, restore, or HUD.
-title: "[Bug]: "
+name: 问题反馈
+description: 反馈检测、安装、恢复或 HUD 问题。
+title: "[问题]: "
 labels: ["bug"]
 body:
   - type: textarea
     id: summary
     attributes:
-      label: Summary
-      description: What happened?
+      label: 问题概述
+      description: 发生了什么？
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: Tool version
-      placeholder: v0.1.0 or commit hash
+      label: 工具版本
+      placeholder: v0.1.0 或 commit hash
     validations:
       required: false
   - type: input
     id: game-path
     attributes:
-      label: Game path
+      label: 游戏路径
       placeholder: E:\Neverness To Everness
     validations:
       required: false
   - type: dropdown
     id: install-state
     attributes:
-      label: Installed files in Win64
+      label: Win64 目录内的安装状态
       options:
-        - winmm.dll and dlsstweaks.ini exist
-        - only one file exists
-        - neither exists
-        - not sure
+        - winmm.dll 和 dlsstweaks.ini 都存在
+        - 只存在其中一个
+        - 两个都不存在
+        - 不确定
     validations:
       required: true
   - type: textarea
     id: log
     attributes:
       label: dlsstweaks.log
-      description: Paste the last 80 lines if the log exists.
+      description: 如果日志存在，粘贴最后 80 行。
       render: text
     validations:
       required: false
   - type: textarea
     id: screenshots
     attributes:
-      label: Screenshots
-      description: Add screenshots of the panel or DLSS HUD if useful.
+      label: 截图
+      description: 可以附上面板或 DLSS HUD 截图。
     validations:
       required: false

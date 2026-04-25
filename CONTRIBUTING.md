@@ -1,19 +1,19 @@
-# Contributing
+# 贡献指南
 
-Contributions should keep the tool simple for non-programmers.
+这个项目优先服务没有编程基础的普通玩家。改动应保持工具简单、可恢复、可解释。
 
-## Rules
+## 基本规则
 
-- Keep the default path local-only: `127.0.0.1`.
-- Do not add online telemetry, analytics, or background network calls.
-- Do not silently modify NVIDIA DRS global profile settings.
-- Keep restore behavior manifest-based, not blind deletion.
-- Keep Windows paths and non-admin usage clear in the UI.
+- 默认只监听本机：`127.0.0.1`。
+- 不添加在线统计、遥测或后台网络请求。
+- 不静默修改 NVIDIA DRS 全局档案。
+- 恢复逻辑必须基于 manifest，不做盲删。
+- UI 中要清楚说明 Windows 路径、权限和恢复方式。
 
-## Before Submitting
+## 提交前检查
 
 1. Run `python -m py_compile app.py`.
-2. Start `run.bat` and open `http://127.0.0.1:22532`.
-3. Test path detection with a real game folder or a fake `Client\WindowsNoEditor\HT\Binaries\Win64\HTGame.exe` layout.
-4. Test install and restore on a disposable copy before testing on a real game folder.
-5. Update `README.md` and `docs/` if behavior changes.
+2. 启动 `run.bat`，打开 `http://127.0.0.1:22532`。
+3. 用真实游戏目录或模拟目录测试路径检测。
+4. 先在可丢弃目录测试安装和恢复，再碰真实游戏目录。
+5. 如果行为变了，同步更新 `README.md` 和 `docs/`。

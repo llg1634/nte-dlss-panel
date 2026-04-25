@@ -1,19 +1,19 @@
-name: Question
-description: Ask how to use the tool.
-title: "[Question]: "
+name: 使用问题
+description: 询问工具用法。
+title: "[使用问题]: "
 labels: ["question"]
 body:
   - type: textarea
     id: question
     attributes:
-      label: Question
-      description: What do you want to know?
+      label: 问题
+      description: 你想了解什么？
     validations:
       required: true
   - type: textarea
     id: context
     attributes:
-      label: Context
-      description: What have you already tried?
+      label: 背景
+      description: 你已经试过哪些步骤？
     validations:
       required: false

@@ -1,15 +1,15 @@
-## Summary
+## 概述
 
-Describe what changed.
+说明这次改了什么。
 
-## Testing
+## 测试
 
 - [ ] `python -m py_compile app.py`
-- [ ] WebUI starts on `127.0.0.1:22532`
-- [ ] Path detection tested
-- [ ] Install/restore tested on a disposable folder
+- [ ] WebUI 能在 `127.0.0.1:22532` 启动
+- [ ] 已测试路径检测
+- [ ] 已在可丢弃目录测试安装和恢复
 
-## Documentation
+## 文档
 
-- [ ] README updated if behavior changed
-- [ ] Docs updated if user steps changed
+- [ ] 行为变化时已更新 README
+- [ ] 用户步骤变化时已更新 docs

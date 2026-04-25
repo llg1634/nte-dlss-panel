@@ -1,23 +1,23 @@
-# DLSSTweaks Assets
+# DLSSTweaks 资产
 
-This folder contains the DLSSTweaks release files used by the panel:
+这个目录放面板使用的 DLSSTweaks release 文件：
 
 ```text
 dxgi.dll
 dlsstweaks.ini
 ```
 
-The panel copies `dxgi.dll` to the game Win64 folder as:
+面板安装时会把 `dxgi.dll` 复制到游戏 Win64 目录并改名为：
 
 ```text
 winmm.dll
 ```
 
-Do not rename the asset file here. The rename happens during install.
+不要在这里手动改名。改名发生在安装流程里。
 
-If you update DLSSTweaks:
+如果要更新 DLSSTweaks：
 
-1. Replace `dxgi.dll`.
-2. Replace `dlsstweaks.ini`.
-3. Start the panel and install to a test folder first.
-4. Confirm `dlsstweaks.log` contains `WINMM.dll wrapper loaded`.
+1. 替换 `dxgi.dll`。
+2. 替换 `dlsstweaks.ini`。
+3. 先用面板安装到测试目录。
+4. 确认 `dlsstweaks.log` 包含 `WINMM.dll wrapper loaded`。
