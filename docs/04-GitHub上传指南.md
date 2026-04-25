@@ -70,7 +70,7 @@ Initial release
 如果本机安装了 Git：
 
 ```powershell
-cd github-ready-nte-dlss-panel
+cd <仓库文件夹>
 git init
 git add .
 git commit -m "Initial release"

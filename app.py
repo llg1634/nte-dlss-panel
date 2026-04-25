@@ -38,6 +38,17 @@ HUD_ENABLED_VALUE = 0x400
 HUD_DISABLED_VALUE = 0
 
 
+def safe_console_log(message: str, *, error: bool = False) -> None:
+    stream = sys.stderr if error else sys.stdout
+    if stream is None:
+        return
+    try:
+        stream.write(message + "\n")
+        stream.flush()
+    except Exception:
+        pass
+
+
 class AppError(Exception):
     def __init__(self, message: str, status: int = 400):
         super().__init__(message)
@@ -566,7 +577,7 @@ class Handler(BaseHTTPRequestHandler):
     server_version = "NTEDLSSPanel/1.0"
 
     def log_message(self, fmt: str, *args: object) -> None:
-        sys.stdout.write("[%s] %s\n" % (self.log_date_time_string(), fmt % args))
+        safe_console_log("[%s] %s" % (self.log_date_time_string(), fmt % args))
 
     def send_json(self, data: object, status: int = 200) -> None:
         payload = json.dumps(data, ensure_ascii=False).encode("utf-8")
@@ -659,13 +670,13 @@ def main() -> int:
     args = parser.parse_args()
 
     if not WEB_DIR.is_dir():
-        print("web directory missing", file=sys.stderr)
+        safe_console_log("web directory missing", error=True)
         return 1
 
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     url = f"http://{args.host}:{args.port}/"
-    print(f"NTE DLSS Panel running at {url}")
-    print("Press Ctrl+C to stop.")
+    safe_console_log(f"NTE DLSS Panel running at {url}")
+    safe_console_log("Press Ctrl+C to stop.")
 
     if not args.no_browser:
         threading.Timer(0.8, lambda: webbrowser.open(url)).start()
@@ -673,7 +684,7 @@ def main() -> int:
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print("\nStopping...")
+        safe_console_log("Stopping...")
     finally:
         server.server_close()
     return 0

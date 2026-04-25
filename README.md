@@ -2,11 +2,33 @@
 
 异环（Neverness To Everness）本地 DLSSTweaks WebUI。工具启动后监听：
 
+English README: [README.en.md](README.en.md)
+
+English keywords: Neverness To Everness, NTE, Ananta, DLSS, DLSSTweaks, NVIDIA DLSS HUD, DLSS render scale, DLSS low resolution, winmm.dll wrapper, local WebUI.
+
 ```text
 http://127.0.0.1:22532
 ```
 
 它不是在线服务，只在本机运行。本机网页负责选择游戏目录，Python 后端负责文件检测、备份、写入和恢复。
+
+## 第三方项目说明
+
+本项目不是 DLSSTweaks 本体，也不是 NVIDIA 官方工具。它是专门给异环（Neverness To Everness / Ananta）整理的中文本地 WebUI 和自动化安装脚本，目标是把异环实测可用的 `winmm.dll + dlsstweaks.ini` 路径做成可恢复的一键流程。
+
+DLSSTweaks 的原作者是 emoose，发布页是：
+
+```text
+https://www.nexusmods.com/site/mods/550
+```
+
+原始 GitHub / 源码说明页：
+
+```text
+https://github.com/emoose/DLSSTweaks
+```
+
+本仓库 `assets/dlsstweaks/` 中的 `dxgi.dll` 和 `dlsstweaks.ini` 来自 DLSSTweaks release。再分发时请保留本仓库的 [NOTICE.md](NOTICE.md) 和 DLSSTweaks 的 MIT License 说明。
 
 ## 文档导航
 
@@ -178,7 +200,7 @@ dlsstweaks.log
 示例：
 
 ```text
-E:\Neverness To Everness\Client\WindowsNoEditor\HT\Binaries\Win64\_nte_dlss_backups\20260425-135421-489
+<游戏安装目录>\Client\WindowsNoEditor\HT\Binaries\Win64\_nte_dlss_backups\<时间戳>
 ```
 
 备份目录里包含：
@@ -208,6 +230,18 @@ XInput1_4.dll          如果安装前存在
 
 ## 使用方法
 
+打包版：
+
+```text
+双击 NTEDLSSPanel.exe
+```
+
+如果 HUD 开关提示没有权限：
+
+```text
+双击 run_exe_as_admin.bat
+```
+
 源码方式：
 
 ```text
@@ -223,7 +257,7 @@ http://127.0.0.1:22532
 页面步骤：
 
 1. 点“浏览”。
-2. 选择异环安装根目录，例如 `E:\Neverness To Everness`。
+2. 选择异环安装根目录，例如 `<游戏安装目录>`。
 3. 点“检测路径”。
 4. 选择比例，默认 `0.30`。
 5. 点“按当前档位设置安装 / 更新”。
