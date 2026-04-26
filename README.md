@@ -249,6 +249,14 @@ XInput1_4.dll          如果安装前存在
 
 ## 使用方法
 
+推荐下载 Release 里的单文件版：
+
+```text
+NTEDLSSPanel-v版本号.exe
+```
+
+双击即可运行，不需要解压。如果 Windows 或杀软拦截，需要手动允许。
+
 打包版：
 
 ```text

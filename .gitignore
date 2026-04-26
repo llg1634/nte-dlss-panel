@@ -5,4 +5,6 @@ _tmp*/
 _local_backups/
 dist/
 build/
+dist-onefile/
+build-onefile/
 *.spec

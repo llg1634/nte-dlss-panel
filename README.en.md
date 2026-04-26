@@ -93,6 +93,14 @@ Double-click run_as_admin.bat
 Packaged release:
 
 ```text
+Run NTEDLSSPanel-vX.Y.Z.exe
+```
+
+This is the recommended single-file release. It does not require extracting a zip.
+
+One-folder package:
+
+```text
 Run NTEDLSSPanel.exe
 ```
 
