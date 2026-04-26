@@ -31,7 +31,7 @@
           <h2>一键部署 winmm 代理，绕过 720p 下限。</h2>
           <p>
             选择异环安装目录，工具会自动定位 <code>HTGame.exe</code>，写入
-            <code>winmm.dll</code> 和 <code>dlsstweaks.ini</code>。安装前会备份同名文件，恢复时按备份清单还原。
+            <code>winmm.dll</code> 和 <code>dlsstweaks.ini</code>。流程：01 选游戏，02 设比例，03 开 HUD 验证，04 看安装步骤，05 日志、备份与恢复。
           </p>
           <p class="service-note">
             注意：网页只是前端面板，真正运行的是本机后端服务。只关闭浏览器标签页不会退出
@@ -46,7 +46,8 @@
       </section>
 
       <section class="grid">
-        <article class="card panel">
+        <div class="stack-column left-stack">
+        <article class="card panel select-panel">
           <div class="section-title">
             <span>01</span>
             <div>
@@ -70,7 +71,10 @@
           </div>
         </article>
 
-        <article class="card panel">
+        </div>
+
+        <div class="stack-column right-stack">
+        <article class="card panel ratio-panel">
           <div class="section-title">
             <span>02</span>
             <div>
@@ -154,7 +158,7 @@
           </p>
         </article>
 
-        <article class="card panel">
+        <article class="card panel hud-panel">
           <div class="section-title">
             <span>03</span>
             <div>
@@ -177,6 +181,7 @@
             成功开启后，进游戏打开 DLSS 时屏幕角落会显示 DLSS HUD。若写入失败，用管理员权限运行工具。
           </p>
         </article>
+        </div>
 
         <article class="card panel wide">
           <div class="section-title">

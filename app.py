@@ -595,7 +595,7 @@ def schedule_shutdown(server: ThreadingHTTPServer) -> None:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "NTEDLSSPanel/0.1.3"
+    server_version = "NTEDLSSPanel/0.1.4"
 
     def log_message(self, fmt: str, *args: object) -> None:
         safe_console_log("[%s] %s" % (self.log_date_time_string(), fmt % args))
