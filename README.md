@@ -1,8 +1,8 @@
-# 异环 DLSS 4.5 低渲染比例一键部署工具（33% 以下 / 720p 以下 / 默认四档恢复）
+# 异环 DLSS 一键部署工具（DLSS 4.5 / 低渲染比例 / 720p 以下）
 
-**搜索关键词**：异环 DLSS 4.5 低渲染比例、异环 DLSS 一键部署、异环 33% 以下渲染分辨率、异环 720p 以下、异环 540p 超分 4K、异环 DLSSTweaks winmm、dxgi.dll 被检测、NTE DLSS Panel。
+**搜索关键词**：异环 DLSS 一键部署、异环 DLSS 一键设置、异环 DLSS 一键工具、异环 DLSSTweaks 一键、异环低渲染比例一键设置、异环 DLSS 4.5 一键部署、异环 720p 以下一键、NTE DLSS Panel。
 
-面向《异环》（Neverness To Everness / Ananta）的 DLSS 4.x / DLSS 4.5 / L 模型低渲染倍率本地 WebUI。它用于在 4K 输出下测试 33% 以下、720p 以下、680p、648p、540p、25%-30% render scale 等 DLSS 自定义比例，并把异环实测可用的 DLSSTweaks `winmm.dll + dlsstweaks.ini` 方案做成可备份、可恢复、可验证的一键流程。
+面向《异环》（Neverness To Everness / Ananta）的 DLSS 4.x / DLSS 4.5 / L 模型低渲染倍率本地 WebUI。它把异环实测可用的 DLSSTweaks `winmm.dll + dlsstweaks.ini` 方案做成一键部署、一键设置、一键恢复流程，用于在 4K 输出下测试 33% 以下、720p 以下、680p、648p、540p、25%-30% render scale 等 DLSS 自定义比例。
 
 English README: [README.en.md](README.en.md)
 
@@ -16,13 +16,15 @@ http://127.0.0.1:22532
 
 ## 搜索关键词 / Search Keywords
 
-中文核心搜索词：异环 DLSS 4.5，异环 DLSS 4，异环 DLSS L 模型，异环 DLSS 一键，异环 DLSS 一键部署，异环 DLSS 低渲染比例，异环自定义渲染比例，异环 33% 以下渲染分辨率，异环 720p 以下，异环 sub-720p，异环 540p 超分 4K，异环 648p 超分 4K，异环 680p 超分 4K，异环 25% 渲染倍率，异环 30% 渲染倍率。
+普通用户搜索词：异环 DLSS 一键部署，异环 DLSS 一键设置，异环 DLSS 一键工具，异环 DLSS 一键修改，异环 DLSS 一键优化，异环 DLSSTweaks 一键部署，异环 DLSSTweaks 一键设置，异环低渲染比例一键设置，异环低分辨率一键部署，异环 DLSS 4.5 一键部署，异环 DLSS 4.5 一键设置，异环 720p 以下一键，异环 540p 超分 4K 一键。
 
-中文问题搜索词：异环 DLSS 怎么低于 720p，异环 DLSS 怎么改 30%，异环 DLSS 33% 以下，异环 DLSS 性能档对应什么，异环 NVIDIA App 超级性能，异环 DLSS HUD 怎么开，异环 dxgi.dll 被检测，异环 DLSSTweaks 不生效，异环 dlsstweaks.log 没生成，异环 winmm.dll 代理，异环 默认四档恢复。
+功能搜索词：异环 DLSS 4.5，异环 DLSS 4，异环 DLSS L 模型，异环 DLSS 低渲染比例，异环 DLSS 自定义渲染比例，异环 33% 以下渲染分辨率，异环 720p 以下，异环 sub-720p，异环 540p 超分 4K，异环 648p 超分 4K，异环 680p 超分 4K，异环 25% 渲染倍率，异环 30% 渲染倍率，异环 默认四档恢复。
+
+问题搜索词：异环 DLSS 怎么低于 720p，异环 DLSS 怎么改 30%，异环 DLSS 怎么改 25%，异环 DLSS 33% 以下怎么开，异环 DLSS 性能档对应什么，异环 NVIDIA App 超级性能，异环 DLSS HUD 怎么开，异环 dxgi.dll 被检测，异环 DLSSTweaks 不生效，异环 dlsstweaks.log 没生成，异环 winmm.dll 代理。
 
 实现相关关键词：DLSSTweaks 一键，DLSSTweaks winmm，DLSSTweaks winmm.dll，dlsstweaks.ini，DLSSQualityLevels，UltraPerformance，Performance，Balanced，Quality，NVIDIA DLSS HUD，NVIDIA NGX，UE5 DLSS，Unreal Engine 5 DLSS，dxgi.dll detected，winmm.dll wrapper。
 
-English search keywords: Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS Panel, NTE DLSS one click, NTE DLSS one click deploy, NTE low render scale, NTE custom render scale, NTE 33% render scale, NTE below 33%, NTE sub-720p DLSS, NTE 540p to 4K, NTE 648p to 4K, NTE 680p to 4K, NTE 25% render scale, NTE 30% render scale, DLSS L model, DLSSTweaks winmm wrapper, dxgi.dll detected, dlsstweaks.ini, DLSSQualityLevels, NVIDIA DLSS HUD, Unreal Engine 5 DLSS.
+English search keywords: Neverness To Everness DLSS one click, NTE DLSS one-click deployment, NTE DLSS one-click setup, Ananta DLSS one click, NTE DLSSTweaks one click, NTE DLSS 4.5 one click, NTE low render scale one click, NTE below 720p one click, NTE DLSS Panel, NTE below 33% render scale, NTE sub-720p DLSS, NTE 540p to 4K, NTE 648p to 4K, NTE 680p to 4K, DLSSTweaks winmm wrapper, dxgi.dll detected, dlsstweaks.ini, DLSSQualityLevels, NVIDIA DLSS HUD, Unreal Engine 5 DLSS.
 
 ## 项目定位
 

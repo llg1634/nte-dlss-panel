@@ -1,14 +1,16 @@
-# Neverness To Everness / Ananta DLSS 4.5 Low Render Scale One-Click Panel
+# Neverness To Everness / Ananta DLSS One-Click Deployment Panel
 
-Chinese-first local WebUI for Neverness To Everness / Ananta DLSS 4.x / DLSS 4.5 / DLSS L model low render scale deployment. It targets below-33%, sub-720p, 680p, 648p, 540p, and 25%-30% render scale experiments at 4K output, using the tested DLSSTweaks `winmm.dll + dlsstweaks.ini` workflow with backup, restore, default DLSS level recovery, and DLSS HUD verification.
+Chinese-first local WebUI for one-click deployment and one-click setup of the tested Neverness To Everness / Ananta DLSSTweaks `winmm.dll + dlsstweaks.ini` workflow. It targets DLSS 4.x / DLSS 4.5 / DLSS L model low render scale experiments below 33%, including sub-720p, 680p, 648p, 540p, and 25%-30% render scale at 4K output, with backup, restore, default DLSS level recovery, and DLSS HUD verification.
 
-Keywords: Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS Panel, NTE DLSS one click, NTE low render scale, NTE custom render scale, below 33% DLSS render scale, sub-720p DLSS, 540p to 4K, 648p to 4K, 680p to 4K, 25% render scale, 30% render scale, DLSS L model, NVIDIA NGX, NVIDIA DLSS HUD, DLSSTweaks winmm wrapper, dlsstweaks.ini, DLSSQualityLevels, dxgi.dll detected, Unreal Engine 5 DLSS, UE5 DLSS.
+Keywords: Neverness To Everness DLSS one click, NTE DLSS one-click deployment, NTE DLSS one-click setup, Ananta DLSS one click, NTE DLSSTweaks one click, NTE DLSS 4.5 one click, NTE low render scale one click, NTE below 720p one click, NTE DLSS Panel, DLSSTweaks winmm wrapper, dlsstweaks.ini, DLSSQualityLevels, dxgi.dll detected.
 
 Chinese README: [README.md](README.md)
 
 ## Search Queries
 
-Core English queries: Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS 4.5, NTE DLSS Panel, NTE DLSS one click, NTE DLSS one click deploy, NTE low render scale, NTE custom render scale, NTE below 33%, NTE 33% render scale, NTE sub-720p DLSS, NTE 540p to 4K, NTE 648p to 4K, NTE 680p to 4K, NTE 25% render scale, NTE 30% render scale.
+Normal user queries: Neverness To Everness DLSS one click, Neverness To Everness DLSS one-click deployment, NTE DLSS one-click setup, NTE DLSS one-click tool, NTE DLSS one-click installer, Ananta DLSS one click, Ananta DLSS one-click deployment, NTE DLSSTweaks one click, NTE low render scale one click, NTE below 720p one click, NTE DLSS 4.5 one click.
+
+Feature queries: Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS 4.5, NTE DLSS Panel, NTE low render scale, NTE custom render scale, NTE below 33%, NTE 33% render scale, NTE sub-720p DLSS, NTE 540p to 4K, NTE 648p to 4K, NTE 680p to 4K, NTE 25% render scale, NTE 30% render scale.
 
 Problem-oriented queries: Neverness To Everness DLSS below 720p, Ananta DLSS below 720p, NTE DLSS 30 percent, NTE DLSS 25 percent, NTE DLSS performance mode mapping, NTE NVIDIA App ultra performance, NTE DLSS HUD, NTE dxgi.dll detected, NTE DLSSTweaks not working, NTE dlsstweaks.log not generated, NTE winmm.dll wrapper.
 
