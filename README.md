@@ -1,6 +1,8 @@
-# 异环 DLSS Panel
+# 异环等 UE5 游戏 DLSS 4.5 自定义 33% 以下渲染分辨率一键部署工具
 
-异环（Neverness To Everness / Ananta）DLSS 4.x / DLSS 4.5 低渲染倍率本地 WebUI。它用于在 4K 输出下测试 720p 以下、680p、648p、540p、25%-30% render scale 等 DLSS 自定义比例，并把异环实测可用的 DLSSTweaks `winmm.dll + dlsstweaks.ini` 路径做成可备份、可恢复的一键流程。
+**搜索关键词**：异环 DLSS 一键、异环 DLSS 一键部署、NTE DLSS Panel、异环低渲染比例、异环 720p 以下、异环 DLSSTweaks 一键、异环 DLSS 4.5、异环 33% 以下分辨率。
+
+异环（Neverness To Everness / Ananta）DLSS 4.x / DLSS 4.5 低渲染倍率本地 WebUI。它用于在 4K 输出下测试 33% 以下、720p 以下、680p、648p、540p、25%-30% render scale 等 DLSS 自定义比例，并把异环实测可用的 DLSSTweaks `winmm.dll + dlsstweaks.ini` 路径做成可备份、可恢复的一键流程。
 
 English README: [README.en.md](README.en.md)
 
@@ -14,9 +16,9 @@ http://127.0.0.1:22532
 
 ## 搜索关键词 / Search Keywords
 
-异环 DLSS 4.5，异环 DLSS 4，异环 720p 以下，异环 540p 超分 4K，异环 25% 渲染倍率，异环 30% 渲染倍率，异环 DLSS 低分辨率，异环 DLSSTweaks，异环 winmm.dll，异环 dxgi.dll detected，异环 DLSS HUD，异环 NVIDIA App 超级性能，异环性能档，异环 UE5 DLSS。
+异环 DLSS 一键，异环 DLSS 一键部署，异环 DLSS 4.5，异环 DLSS 4，异环 33% 以下分辨率，异环低渲染比例，异环自定义渲染比例，异环 720p 以下，异环 540p 超分 4K，异环 25% 渲染倍率，异环 30% 渲染倍率，异环 DLSS 低分辨率，异环 DLSSTweaks 一键，异环 winmm.dll，异环 dxgi.dll detected，异环 DLSS HUD，异环 NVIDIA App 超级性能，异环性能档，异环 UE5 DLSS。
 
-Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS, NTE sub-720p DLSS, NTE low render scale, DLSS 540p to 4K, DLSS 648p to 4K, DLSS 680p to 4K, DLSS 25% render scale, DLSS 30% render scale, DLSS L model, NVIDIA NGX, DLSSTweaks winmm wrapper, dlsstweaks.ini, Unreal Engine 5 DLSS.
+Neverness To Everness DLSS one click, NTE DLSS one click deploy, Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS Panel, NTE sub-720p DLSS, NTE low render scale, NTE 33% render scale, DLSS 540p to 4K, DLSS 648p to 4K, DLSS 680p to 4K, DLSS 25% render scale, DLSS 30% render scale, DLSS L model, NVIDIA NGX, DLSSTweaks winmm wrapper, dlsstweaks.ini, Unreal Engine 5 DLSS.
 
 ## 项目定位
 

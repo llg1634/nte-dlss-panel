@@ -1,14 +1,14 @@
-# Neverness To Everness / Ananta DLSS Panel
+# NTE DLSS 4.5 One-Click Low Render Scale Panel
 
-Chinese-first local WebUI for Neverness To Everness / Ananta DLSS 4.x / DLSS 4.5 low render scale testing. It targets sub-720p, 680p, 648p, 540p, and 25%-30% render scale experiments at 4K output, using the tested DLSSTweaks `winmm.dll + dlsstweaks.ini` workflow.
+Chinese-first local WebUI for Neverness To Everness / Ananta DLSS 4.x / DLSS 4.5 one-click low render scale deployment. It targets 33%-below, sub-720p, 680p, 648p, 540p, and 25%-30% render scale experiments at 4K output, using the tested DLSSTweaks `winmm.dll + dlsstweaks.ini` workflow.
 
-Keywords: Neverness To Everness, Ananta, NTE, DLSS 4, DLSS 4.5, DLSS L model, NVIDIA NGX, NVIDIA DLSS HUD, DLSSTweaks, dlsstweaks.ini, winmm.dll wrapper, dxgi.dll detected, DLSS render scale, low render scale, sub-720p DLSS, 540p to 4K, 648p to 4K, 680p to 4K, 25% render scale, 30% render scale, Unreal Engine 5, UE5, local WebUI.
+Keywords: Neverness To Everness, Ananta, NTE, NTE DLSS Panel, NTE DLSS one click, NTE DLSS one click deploy, DLSS 4, DLSS 4.5, DLSS L model, NVIDIA NGX, NVIDIA DLSS HUD, DLSSTweaks, dlsstweaks.ini, winmm.dll wrapper, dxgi.dll detected, DLSS render scale, low render scale, 33% render scale, sub-720p DLSS, 540p to 4K, 648p to 4K, 680p to 4K, 25% render scale, 30% render scale, Unreal Engine 5, UE5, local WebUI.
 
 Chinese README: [README.md](README.md)
 
 ## Search Queries
 
-Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS low render scale, NTE sub-720p DLSS, NTE 540p to 4K, NTE 25% render scale, NTE 30% render scale, Neverness To Everness DLSSTweaks, Ananta winmm.dll wrapper, DLSS 540p to 4K, DLSS 648p to 4K, DLSS 680p to 4K, DLSS L model, NVIDIA NGX, DLSSTweaks winmm wrapper, Unreal Engine 5 DLSS.
+Neverness To Everness DLSS one click, NTE DLSS one click deploy, Neverness To Everness DLSS 4.5, Ananta DLSS 4.5, NTE DLSS low render scale, NTE sub-720p DLSS, NTE 33% render scale, NTE 540p to 4K, NTE 25% render scale, NTE 30% render scale, Neverness To Everness DLSSTweaks, Ananta winmm.dll wrapper, DLSS 540p to 4K, DLSS 648p to 4K, DLSS 680p to 4K, DLSS L model, NVIDIA NGX, DLSSTweaks winmm wrapper, Unreal Engine 5 DLSS.
 
 ## Project Positioning
 

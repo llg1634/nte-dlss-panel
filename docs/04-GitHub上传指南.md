@@ -49,7 +49,7 @@ build/
 5. Description 填：
 
 ```text
-异环 / Neverness To Everness / Ananta DLSS 4.5 low render scale WebUI: sub-720p, 540p-to-4K, DLSSTweaks winmm wrapper.
+异环 DLSS 一键 / NTE DLSS 一键部署：DLSS 4.5 自定义 33% 以下渲染分辨率，本地 WebUI 设置 25%-30% render scale。
 ```
 
 6. 选择 `Public` 或 `Private`。
@@ -92,7 +92,7 @@ git push -u origin main
 1. 点右侧 `Releases`。
 2. 点 `Draft a new release`。
 3. Tag 写 `v0.1.0`。
-4. Title 写 `异环 DLSS Panel v0.1.0`。
+4. Title 写 `异环 DLSS 4.5 33%以下渲染分辨率一键部署工具 v0.1.0`。
 5. 上传 zip。
 6. 发布。
 
