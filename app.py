@@ -31,6 +31,12 @@ PROXY_DLL = "winmm.dll"
 STALE_PROXY_FILES = ("dxgi.dll", "nvngx.dll", "XInput1_4.dll")
 MANAGED_FILES = (PROXY_DLL, "dlsstweaks.ini", "dlsstweaks.log", *STALE_PROXY_FILES)
 DLSS_LEVELS = ("UltraPerformance", "Performance", "Balanced", "Quality")
+DEFAULT_DLSS_LEVEL_RATIOS = {
+    "UltraPerformance": "0.333333",
+    "Performance": "0.5",
+    "Balanced": "0.58",
+    "Quality": "0.666667",
+}
 UNCHANGED_QUALITY_LEVELS = {"DLAA": "1", "UltraQuality": "0"}
 HUD_REGISTRY_PATH = r"SOFTWARE\NVIDIA Corporation\Global\NGXCore"
 HUD_REGISTRY_VALUE = "ShowDlssIndicator"
@@ -353,6 +359,60 @@ def read_log_summary(log_path: Path) -> dict:
     }
 
 
+def same_ratio(left: str | None, right: str) -> bool:
+    try:
+        return abs(float(str(left).strip()) - float(right)) < 0.001
+    except (TypeError, ValueError):
+        return False
+
+
+def parse_dlss_quality_levels(ini_path: Path) -> dict:
+    if not ini_path.is_file():
+        return {
+            "exists": False,
+            "enabled": False,
+            "ratios": {},
+            "isDefaultMapping": False,
+        }
+
+    try:
+        lines = ini_path.read_text(encoding="utf-8", errors="replace").splitlines()
+    except OSError:
+        lines = []
+
+    in_section = False
+    enabled = False
+    ratios: dict[str, str] = {}
+    for line in lines:
+        header = re.match(r"^\s*\[([^\]]+)\]\s*$", line)
+        if header:
+            in_section = header.group(1).strip().lower() == "dlssqualitylevels"
+            continue
+        if not in_section:
+            continue
+        key_match = re.match(r"^\s*([A-Za-z0-9_]+)\s*=\s*([^;#]+)", line)
+        if not key_match:
+            continue
+        key = key_match.group(1)
+        value = key_match.group(2).strip()
+        if key == "Enable":
+            enabled = value.lower() == "true"
+        elif key in DLSS_LEVELS:
+            ratios[key] = value
+
+    is_default = (
+        all(level in ratios for level in DLSS_LEVELS)
+        and all(same_ratio(ratios.get(level), DEFAULT_DLSS_LEVEL_RATIOS[level]) for level in DLSS_LEVELS)
+    )
+    return {
+        "exists": True,
+        "enabled": enabled,
+        "ratios": ratios,
+        "defaultRatios": DEFAULT_DLSS_LEVEL_RATIOS,
+        "isDefaultMapping": is_default,
+    }
+
+
 def inspect_install(win64: Path) -> dict:
     files = {}
     asset_hash = sha256(ASSET_DLL) if ASSET_DLL.is_file() else None
@@ -378,6 +438,7 @@ def inspect_install(win64: Path) -> dict:
         "iniInstalled": (win64 / "dlsstweaks.ini").is_file(),
         "staleProxyFiles": [name for name in STALE_PROXY_FILES if (win64 / name).exists()],
         "files": files,
+        "dlssQualityLevels": parse_dlss_quality_levels(win64 / "dlsstweaks.ini"),
         "log": read_log_summary(win64 / "dlsstweaks.log"),
         "backups": list_backups(win64),
     }
@@ -525,6 +586,52 @@ def install_patch(path_value: str | None, ratio_value: object) -> dict:
     }
 
 
+def restore_default_dlss_levels(path_value: str | None) -> dict:
+    if not ASSET_INI.is_file():
+        raise AppError("缺少 DLSSTweaks INI 模板。需要 assets/dlsstweaks/dlsstweaks.ini。", 500)
+
+    detected = detect_game(path_value)
+    win64 = Path(detected["win64"])
+    ini_path = win64 / "dlsstweaks.ini"
+    backup_dir = win64 / "_nte_dlss_backups" / now_id()
+    backup_dir.mkdir(parents=True, exist_ok=True)
+
+    manifest = {
+        "created": datetime.now().isoformat(timespec="seconds"),
+        "tool": "nte-dlss-panel",
+        "action": "restore-default-dlss-levels",
+        "ratio": "default",
+        "ratios": DEFAULT_DLSS_LEVEL_RATIOS,
+        "win64": str(win64),
+        "backupDir": str(backup_dir),
+        "files": {
+            "dlsstweaks.ini": copy_to_backup(ini_path, backup_dir),
+        },
+        "operations": [],
+    }
+    if ini_path.exists():
+        manifest["operations"].append("备份 dlsstweaks.ini")
+
+    template = ini_path.read_text(encoding="utf-8", errors="replace") if ini_path.is_file() else ASSET_INI.read_text(encoding="utf-8", errors="replace")
+    ini_path.write_text(update_dlss_ini(template, DEFAULT_DLSS_LEVEL_RATIOS), encoding="utf-8")
+    manifest["operations"].append("恢复异环默认 DLSS 四档映射")
+    manifest["operations"].append("未修改 HDR、Engine.ini、启动器配置或 NVIDIA 全局比例")
+
+    (backup_dir / "manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    return {
+        "ok": True,
+        "message": "已把 dlsstweaks.ini 的四档 DLSS 映射恢复为默认比例。",
+        "ratios": DEFAULT_DLSS_LEVEL_RATIOS,
+        "backup": str(backup_dir),
+        "operations": manifest["operations"],
+        "detected": detect_game(path_value),
+    }
+
+
 def restore_patch(path_value: str | None, backup_name: str | None = None) -> dict:
     detected = detect_game(path_value)
     win64 = Path(detected["win64"])
@@ -595,7 +702,7 @@ def schedule_shutdown(server: ThreadingHTTPServer) -> None:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "NTEDLSSPanel/0.1.4"
+    server_version = "NTEDLSSPanel/0.1.5"
 
     def log_message(self, fmt: str, *args: object) -> None:
         safe_console_log("[%s] %s" % (self.log_date_time_string(), fmt % args))
@@ -674,6 +781,9 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/install":
                 ratio_payload = data.get("ratios", data.get("ratio", "0.30"))
                 self.send_json(install_patch(data.get("path"), ratio_payload))
+                return
+            if parsed.path == "/api/default-levels":
+                self.send_json(restore_default_dlss_levels(data.get("path")))
                 return
             if parsed.path == "/api/restore":
                 self.send_json(restore_patch(data.get("path"), data.get("backup")))

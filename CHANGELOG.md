@@ -1,5 +1,12 @@
 # 更新日志
 
+## 0.1.5
+
+- 新增“恢复默认四档”功能：一键把 `UltraPerformance / Performance / Balanced / Quality` 写回常规 DLSS 映射。
+- 默认四档映射为 `0.333333 / 0.5 / 0.58 / 0.666667`，用于取消低倍率自定义但保留 DLSSTweaks 代理。
+- 检测结果和状态条会显示当前 `dlsstweaks.ini` 是默认映射还是自定义映射。
+- 文档明确说明该恢复功能只修改当前游戏 Win64 目录的 `dlsstweaks.ini`，不会修改 HDR、`Engine.ini`、启动器参数或 NVIDIA 全局比例。
+
 ## 0.1.4
 
 - 调整 WebUI 顶部操作区布局：01 选择游戏卡片不再被 02 渲染比例卡片撑高。

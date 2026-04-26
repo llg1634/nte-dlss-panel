@@ -30,6 +30,21 @@ http://127.0.0.1:22532
 
 It detects the Neverness To Everness / Ananta game folder, backs up existing files, installs the DLSSTweaks wrapper as `winmm.dll`, writes `dlsstweaks.ini`, and provides a manifest-based restore flow.
 
+## Default DLSS Level Restore
+
+If you want to stop using the custom low render scale but keep the DLSSTweaks wrapper installed, use `恢复默认四档` / restore default levels in section 05. It backs up the current `dlsstweaks.ini` and only resets `[DLSSQualityLevels]` to the common DLSS mapping:
+
+```ini
+[DLSSQualityLevels]
+Enable = true
+UltraPerformance = 0.333333
+Performance = 0.5
+Balanced = 0.58
+Quality = 0.666667
+```
+
+This operation does not modify HDR, `Engine.ini`, launcher command lines, NVIDIA App settings, or NVIDIA DRS `GlobalForcedScale`.
+
 ## Scope
 
 The DLSS render scale override is local to the selected game folder:

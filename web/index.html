@@ -218,7 +218,7 @@
             <span>05</span>
             <div>
               <h3>状态、备份与恢复</h3>
-              <p>恢复会读取安装时保存的 manifest，不是盲删文件。</p>
+              <p>恢复会读取安装时保存的 manifest；默认四档只改 dlsstweaks.ini，不碰 HDR 或系统配置。</p>
             </div>
           </div>
 
@@ -227,6 +227,7 @@
               <option value="">暂无备份</option>
             </select>
             <button id="refreshLogBtn" class="secondary" type="button">刷新日志</button>
+            <button id="defaultLevelsBtn" class="secondary" type="button">恢复默认四档</button>
             <button id="restoreBtn" class="danger" type="button">恢复所选备份</button>
           </div>
 

@@ -109,6 +109,14 @@ function getRatios() {
   return Object.fromEntries(levels.map((level) => [level, $(`level-${level}`).value.trim()]));
 }
 
+function formatQualityLevels(status) {
+  const quality = status?.dlssQualityLevels;
+  if (!quality?.exists) return "未读取到 dlsstweaks.ini";
+  const ratios = quality.ratios || {};
+  const label = quality.isDefaultMapping ? "默认映射" : "自定义映射";
+  return `${label}：UP ${ratios.UltraPerformance || "-"} / P ${ratios.Performance || "-"} / B ${ratios.Balanced || "-"} / Q ${ratios.Quality || "-"}`;
+}
+
 function renderDetection(detected) {
   state.detected = detected;
   state.path = detected.input;
@@ -116,6 +124,7 @@ function renderDetection(detected) {
 
   const status = detected.status || {};
   const stale = status.staleProxyFiles?.length ? status.staleProxyFiles.join(", ") : "无";
+  const qualityLine = formatQualityLevels(status);
   const running = detected.processes?.length
     ? detected.processes.map((p) => `${p.ProcessName}#${p.Id}`).join(", ")
     : "未运行";
@@ -126,6 +135,7 @@ function renderDetection(detected) {
     HTGame：<code>${formatPath(detected.exe)}</code><br>
     Win64：<code>${formatPath(detected.win64)}</code><br>
     当前代理：${status.proxyInstalled ? "已存在 winmm.dll" : "未安装"}<br>
+    四档映射：${qualityLine}<br>
     旧代理残留：${stale}<br>
     运行进程：${running}
   `;
@@ -197,6 +207,9 @@ function renderStatus(status) {
   const parts = [];
   parts.push(status?.proxyInstalled ? "winmm.dll 已安装" : "winmm.dll 未安装");
   parts.push(status?.iniInstalled ? "ini 已安装" : "ini 未安装");
+  if (status?.dlssQualityLevels?.exists) {
+    parts.push(status.dlssQualityLevels.isDefaultMapping ? "四档默认映射" : "四档自定义映射");
+  }
   if (log.loaded) parts.push("WINMM 已加载");
   if (log.hooks) parts.push("DLSS Hook 已完成");
   if (status?.staleProxyFiles?.length) parts.push(`旧代理残留：${status.staleProxyFiles.join(", ")}`);
@@ -357,6 +370,30 @@ async function restorePatch() {
   }
 }
 
+async function restoreDefaultLevels() {
+  const path = gamePath.value.trim();
+  if (!path) {
+    showToast("先选择游戏路径。");
+    return;
+  }
+  if (!confirm("恢复异环默认 DLSS 四档映射？只会改 dlsstweaks.ini，不会修改 HDR、Engine.ini、启动器配置或 NVIDIA 全局比例。")) {
+    return;
+  }
+  setBusy(true);
+  try {
+    const data = await request("/api/default-levels", {
+      method: "POST",
+      body: JSON.stringify({ path }),
+    });
+    renderDetection(data.detected);
+    showToast("已恢复默认四档映射。");
+  } catch (error) {
+    showToast(error.message);
+  } finally {
+    setBusy(false);
+  }
+}
+
 async function shutdownTool() {
   if (!confirm("退出本地后端服务？关闭后需要重新运行 NTEDLSSPanel.exe 或 run.bat 才能再次打开面板。")) {
     return;
@@ -453,6 +490,7 @@ $("browseBtn").addEventListener("click", browsePath);
 $("detectBtn").addEventListener("click", detectPath);
 $("installBtn").addEventListener("click", installPatch);
 $("refreshLogBtn").addEventListener("click", () => refreshLog(true));
+$("defaultLevelsBtn").addEventListener("click", restoreDefaultLevels);
 $("restoreBtn").addEventListener("click", restorePatch);
 $("hudRefreshBtn").addEventListener("click", () => refreshHud(true));
 $("hudOnBtn").addEventListener("click", () => setHud(true));

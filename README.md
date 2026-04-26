@@ -63,6 +63,7 @@ https://github.com/emoose/DLSSTweaks
 - 零配置路径检测：可选择异环根目录，也可选择 `HTGame.exe` 所在 Win64 目录。
 - 局部比例修改：只写当前游戏目录的 `dlsstweaks.ini`，不修改 NVIDIA App / DRS 全局比例。
 - 自动备份恢复：每次安装都会生成独立 manifest，恢复时按清单回滚。
+- 默认四档恢复：可把 `UltraPerformance / Performance / Balanced / Quality` 恢复成常规 DLSS 映射，只改 `dlsstweaks.ini`。
 - HUD 辅助验证：可开启/关闭 NVIDIA DLSS HUD，用于确认实际输入/输出分辨率。
 - 后端退出按钮：网页前端和本地后端分离，关闭网页不会结束 exe；面板提供“退出工具”按钮关闭本地服务。
 
@@ -167,6 +168,25 @@ Performance
 Balanced
 Quality
 ```
+
+## 恢复默认四档映射
+
+如果你只是想取消低倍率自定义，不想完全卸载 `winmm.dll` 代理，可以在 05 区域点击“恢复默认四档”。它会先备份当前 `dlsstweaks.ini`，然后只把 `[DLSSQualityLevels]` 改回常规 DLSS 映射：
+
+```ini
+[DLSSQualityLevels]
+Enable = true
+UltraPerformance = 0.333333
+Performance = 0.5
+Balanced = 0.58
+Quality = 0.666667
+```
+
+这个操作不修改 HDR，不修改 `Engine.ini`，不修改启动器参数，也不修改 NVIDIA App / DRS 全局比例。它适合下面几种情况：
+
+- 之前把四个档位都写成 `0.30`、`0.25` 或其它低倍率，现在想回到普通 DLSS 档位。
+- 想保留 DLSSTweaks 代理和 HUD/日志验证能力，但暂时不用 33% 以下比例。
+- 不确定当前游戏内“性能”到底映射到哪个档位，想先恢复到最接近原始 DLSS 档位的状态。
 
 ## 安装时会改什么
 

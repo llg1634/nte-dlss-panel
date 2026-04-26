@@ -7,4 +7,6 @@ dist/
 build/
 dist-onefile/
 build-onefile/
+dist-local/
+build-local/
 *.spec
