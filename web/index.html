@@ -71,9 +71,31 @@
           </div>
         </article>
 
+        <article class="card panel hud-panel">
+          <div class="section-title">
+            <span>03</span>
+            <div>
+              <h3>NVIDIA DLSS HUD</h3>
+              <p>用于确认实际输入/输出分辨率。这个开关写入 NVIDIA 全局注册表。</p>
+            </div>
+          </div>
+
+          <div id="hudCard" class="mini-card muted">
+            正在检测 HUD 状态。
+          </div>
+
+          <div class="button-row">
+            <button id="hudRefreshBtn" class="secondary" type="button">重新检测 HUD</button>
+            <button id="hudOnBtn" class="primary" type="button">开启 HUD</button>
+            <button id="hudOffBtn" class="secondary" type="button">关闭 HUD</button>
+          </div>
+
+          <p class="action-note">
+            成功开启后，进游戏打开 DLSS 时屏幕角落会显示 DLSS HUD。若写入失败，用管理员权限运行工具。
+          </p>
+        </article>
         </div>
 
-        <div class="stack-column right-stack">
         <article class="card panel ratio-panel">
           <div class="section-title">
             <span>02</span>
@@ -157,31 +179,6 @@
             NVIDIA 全局强制比例。
           </p>
         </article>
-
-        <article class="card panel hud-panel">
-          <div class="section-title">
-            <span>03</span>
-            <div>
-              <h3>NVIDIA DLSS HUD</h3>
-              <p>用于确认实际输入/输出分辨率。这个开关写入 NVIDIA 全局注册表。</p>
-            </div>
-          </div>
-
-          <div id="hudCard" class="mini-card muted">
-            正在检测 HUD 状态。
-          </div>
-
-          <div class="button-row">
-            <button id="hudRefreshBtn" class="secondary" type="button">重新检测 HUD</button>
-            <button id="hudOnBtn" class="primary" type="button">开启 HUD</button>
-            <button id="hudOffBtn" class="secondary" type="button">关闭 HUD</button>
-          </div>
-
-          <p class="action-note">
-            成功开启后，进游戏打开 DLSS 时屏幕角落会显示 DLSS HUD。若写入失败，用管理员权限运行工具。
-          </p>
-        </article>
-        </div>
 
         <article class="card panel wide">
           <div class="section-title">
